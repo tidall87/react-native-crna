@@ -17,6 +17,7 @@ import moment from 'moment';
 import numeral from 'numeral';
 import {connect} from 'react-redux';
 import EnlargeShrink from '../Animations/EnlargeShrink';
+import FilmVideo from './FilmVideo';
 
 class FilmDetail extends React.Component {
     static navigationOptions = ({ navigation, route }) => {
@@ -93,6 +94,7 @@ class FilmDetail extends React.Component {
                         onPress={() => this._toggleFavorite()}>
                         {this._displayFavoriteImage()}
                     </TouchableOpacity>
+                    {/*<FilmVideo film={film}/>*/}
                     <Text style={styles.description_text}>{film.overview}</Text>
                     <Text style={styles.default_text}>Sorti le {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
                     <Text style={styles.default_text}>Note : {film.vote_average} / 10</Text>
