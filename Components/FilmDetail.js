@@ -19,15 +19,16 @@ import {connect} from 'react-redux';
 import EnlargeShrink from '../Animations/EnlargeShrink';
 
 class FilmDetail extends React.Component {
-    static navigationOptions = ({ navigation }) => {
+    static navigationOptions = ({ navigation, route }) => {
         const { params } = navigation.state
+        const options = route.params
         // On accède à la fonction shareFilm et au film via les paramètres qu'on a ajouté à la navigation
         if (params.film !== undefined && Platform.OS === 'ios') {
             return {
                 // On a besoin d'afficher une image, il faut donc passer par une Touchable une fois de plus
                 headerRight: <TouchableOpacity
                     style={styles.share_touchable_headerrightbutton}
-                    onPress={() => params.shareFilm()}>
+                    onPress={() => options.shareFilm()}>
                     <Image
                         style={styles.share_image}
                         source={require('../Images/ic_share.ios.png')} />
@@ -134,8 +135,10 @@ class FilmDetail extends React.Component {
     // Fonction pour faire passer la fonction _shareFilm et le film aux paramètres de la navigation. Ainsi on aura accès à ces données au moment de définir le headerRight
     _updateNavigationParams() {
         this.props.navigation.setParams({
-            shareFilm: this._shareFilm,
             film: this.state.film
+        })
+        this.props.navigation.setOptions({
+            shareFilm: this._shareFilm
         })
     }
 
