@@ -17,3 +17,11 @@ export function getFilmDetailFromApi (id) {
         .then((response) => response.json())
         .catch((error) => console.error(error));
 }
+
+// Récupération de la video
+export function getFilmVideoFromApi (id) {
+    return fetch('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=' + API_TOKEN + '&language=fr')
+        .then((response) => response.json())
+        .then((response) => console.log(response))
+        .catch((error) => console.error(error));
+}
