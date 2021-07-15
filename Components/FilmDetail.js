@@ -16,6 +16,7 @@ import {getFilmDetailFromApi, getImageFromApi} from '../API/TMDBApi';
 import moment from 'moment';
 import numeral from 'numeral';
 import {connect} from 'react-redux';
+import EnlargeShrink from '../Animations/EnlargeShrink';
 
 class FilmDetail extends React.Component {
     static navigationOptions = ({ navigation }) => {
@@ -41,6 +42,7 @@ class FilmDetail extends React.Component {
             film: undefined, // Pour l'instant on n'a pas les infos du film, on initialise donc le film à undefined.
             isLoading: false // A l'ouverture de la vue, on affiche le chargement, le temps de récupérer le détail du film
         }
+        this._toggleFavorite = this._toggleFavorite.bind(this)
         this._shareFilm = this._shareFilm.bind(this)
     }
 
@@ -62,11 +64,16 @@ class FilmDetail extends React.Component {
 
     _displayFavoriteImage() {
         let sourceImage = require('../Images/heart_empty.png');
+        let shouldEnlarge = false;
         if (this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1) {
             sourceImage = require('../Images/heart_full.png');
+            shouldEnlarge = true;
         }
         return (
-            <Image source={sourceImage} style={styles.favorite_image}/>
+            <EnlargeShrink
+                shouldEnlarge={shouldEnlarge}>
+                <Image source={sourceImage} style={styles.favorite_image}/>
+            </EnlargeShrink>
         )
     }
 
@@ -211,8 +218,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     favorite_image: {
-        width: 40,
-        height: 40
+        flex: 1,
+        width: null,
+        height: null
     },
     share_touchable_floatingactionbutton: {
         position: 'absolute',
