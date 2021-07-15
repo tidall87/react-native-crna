@@ -102,7 +102,7 @@ export default function Navigation() {
                     options={{
                         title: "Historique",
                         tabBarIcon: () => {
-                            return <Image style={styles.icon} source={require('../Images/heart_full.png')}/>
+                            return <Image style={styles.icon} source={require('../Images/history.png')}/>
                         }
                     }}
                 />
