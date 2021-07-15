@@ -1,8 +1,8 @@
-const initialState = {
+const initialHistoricState = {
     historicFilms: []
 }
 
-function manageHistoricFilms(state = initialState, action) {
+function manageHistoricFilms(state = initialHistoricState, action) {
     let nextState
     let historicFilmIndex
 
@@ -30,7 +30,7 @@ function manageHistoricFilms(state = initialState, action) {
             return state;
 
         case 'RESET_HISTORIC':
-            nextState = initialState
+            nextState = initialHistoricState
             return nextState;
 
         default:

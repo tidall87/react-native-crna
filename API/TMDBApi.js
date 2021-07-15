@@ -22,6 +22,5 @@ export function getFilmDetailFromApi (id) {
 export function getFilmVideoFromApi (id) {
     return fetch('https://api.themoviedb.org/3/movie/' + id + '/videos?api_key=' + API_TOKEN + '&language=fr')
         .then((response) => response.json())
-        .then((response) => console.log(response))
         .catch((error) => console.error(error));
 }
