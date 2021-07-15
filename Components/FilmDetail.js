@@ -172,6 +172,8 @@ class FilmDetail extends React.Component {
                     film: data,
                     isLoading: false
                 })
+                const action = {type: "TOGGLE_FILMDETAIL", value: this.state.film}
+                this.props.dispatch(action)
             }, () => { this._updateNavigationParams() });
     }
 }

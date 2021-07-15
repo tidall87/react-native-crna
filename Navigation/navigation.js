@@ -7,6 +7,7 @@ import Search from '../Components/Search';
 import FilmDetail from '../Components/FilmDetail';
 import Favorites from '../Components/Favorites';
 import {Image} from 'react-native';
+import Historic from '../Components/Historic';
 
 const SearchStackNavigator = createStackNavigator();
 const MoviesTabNavigator = createBottomTabNavigator();
@@ -51,6 +52,19 @@ function FavoritesStackNavigation() {
     );
 }
 
+function HistoryStackNavigation() {
+    return (
+        <SearchStackNavigator.Navigator>
+            <SearchStackNavigator.Screen
+                name="Historic"
+                component={Historic}
+                options={{
+                    title: "Historique"
+                }} />
+        </SearchStackNavigator.Navigator>
+    );
+}
+
 export default function Navigation() {
     return (
         <NavigationContainer>
@@ -76,6 +90,17 @@ export default function Navigation() {
                     component={FavoritesStackNavigation}
                     options={{
                         title: "Favoris",
+                        tabBarIcon: () => {
+                            return <Image style={styles.icon} source={require('../Images/heart_full.png')}/>
+                        }
+                    }}
+                />
+
+                <MoviesTabNavigator.Screen
+                    name={'Historic'}
+                    component={HistoryStackNavigation}
+                    options={{
+                        title: "Historique",
                         tabBarIcon: () => {
                             return <Image style={styles.icon} source={require('../Images/heart_full.png')}/>
                         }
