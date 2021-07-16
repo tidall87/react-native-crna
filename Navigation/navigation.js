@@ -8,6 +8,7 @@ import FilmDetail from '../Components/FilmDetail';
 import Favorites from '../Components/Favorites';
 import {Image} from 'react-native';
 import Historic from '../Components/Historic';
+import News from '../Components/News';
 
 const SearchStackNavigator = createStackNavigator();
 const MoviesTabNavigator = createBottomTabNavigator();
@@ -65,6 +66,19 @@ function HistoryStackNavigation() {
     );
 }
 
+function NewStackNavigation() {
+    return (
+        <SearchStackNavigator.Navigator>
+            <SearchStackNavigator.Screen
+                name="News"
+                component={News}
+                options={{
+                    title: "Nouveautés"
+                }} />
+        </SearchStackNavigator.Navigator>
+    );
+}
+
 export default function Navigation() {
     return (
         <NavigationContainer>
@@ -103,6 +117,17 @@ export default function Navigation() {
                         title: "Historique",
                         tabBarIcon: () => {
                             return <Image style={styles.icon} source={require('../Images/history.png')}/>
+                        }
+                    }}
+                />
+
+                <MoviesTabNavigator.Screen
+                    name={'News'}
+                    component={NewStackNavigation}
+                    options={{
+                        title: "Nouveautés",
+                        tabBarIcon: () => {
+                            return <Image style={styles.icon} source={require('../Images/new.png')}/>
                         }
                     }}
                 />
