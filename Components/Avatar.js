@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 class Avatar extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
         this._avatarClicked = this._avatarClicked.bind(this)
     }
 
@@ -46,8 +47,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     avatar: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 50,
         borderColor: '#9B9B9B',
         borderWidth: 2

@@ -1,4 +1,4 @@
-const initialAvatarState = {avatar: {uri: '../../Images/ic_tag_faces.png'}}
+const initialAvatarState = {avatar: require('../../Images/ic_tag_faces.png')}
 
 function manageAvatar(state = initialAvatarState, action) {
     let nextState
