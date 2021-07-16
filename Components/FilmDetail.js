@@ -18,6 +18,7 @@ import numeral from 'numeral';
 import {connect} from 'react-redux';
 import EnlargeShrink from '../Animations/EnlargeShrink';
 import FilmVideo from './FilmVideo';
+import FilmCredits from './FilmCredits';
 
 class FilmDetail extends React.Component {
     static navigationOptions = ({ navigation, route }) => {
@@ -109,6 +110,8 @@ class FilmDetail extends React.Component {
                         return company.name;
                     }).join(" / ")}
                     </Text>
+                    <Text style={styles.title_text}>Liste des acteurs</Text>
+                    <FilmCredits film={film} />
                 </ScrollView>
             )
         }

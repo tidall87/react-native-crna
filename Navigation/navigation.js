@@ -62,6 +62,13 @@ function HistoryStackNavigation() {
                 options={{
                     title: "Historique"
                 }} />
+
+            <SearchStackNavigator.Screen
+                name="FilmDetail"
+                component={FilmDetail}
+                options={{
+                    title: "Détails du film"
+                }} />
         </SearchStackNavigator.Navigator>
     );
 }
@@ -74,6 +81,13 @@ function NewStackNavigation() {
                 component={News}
                 options={{
                     title: "Nouveautés"
+                }} />
+
+            <SearchStackNavigator.Screen
+                name="FilmDetail"
+                component={FilmDetail}
+                options={{
+                    title: "Détails du film"
                 }} />
         </SearchStackNavigator.Navigator>
     );
