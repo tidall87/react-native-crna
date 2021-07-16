@@ -6,20 +6,19 @@ import {connect} from 'react-redux';
 class Avatar extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this._avatarClicked = this._avatarClicked.bind(this)
     }
 
     _avatarClicked() {
         launchCamera({}, (response) => {
             if (response.didCancel) {
-                console.log('cancelled');
+                // console.log('cancelled');
             } else if (response.errorCode !== undefined) {
-                console.log(response.errorCode);
+                // console.log(response.errorCode);
             } else if (response.errorMessage) {
-                console.log(response.errorMessage);
+                // console.log(response.errorMessage);
             } else if (response.assets) {
-                console.log(response.assets);
+                // console.log(response.assets);
                 let requireSource = {uri: response.assets[0].uri};
                 const action = { type: "SET_AVATAR", value: requireSource }
                 this.props.dispatch(action)
